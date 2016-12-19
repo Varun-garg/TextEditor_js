@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Varun's Text Editor</title>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+</head>
+<body onload="EnableEditMode();">
+<div>
+    <button onclick="execCmd('bold')"><span class="fa fa-bold"></span></button>
+    <button onclick="execCmd('italic')"><span class="fa fa-italic"></span></button>
+    <button onclick="execCmd('underline')"><span class="fa fa-underline"></span></button>
+    <button onclick="execCmd('strikeThrough')"><span class="fa fa-strikethrough"></span></button>
+    <button onclick="execCmd('justifyLeft')"><span class="fa fa-align-left"></span></button>
+    <button onclick="execCmd('justifyCenter')"><span class="fa fa-align-center"></span></button>
+    <button onclick="execCmd('justifyRight')"><span class="fa fa-align-right"></span></button>
+    <button onclick="execCmd('justifyFull')"><span class="fa fa-align-justify"></span></button>
+    <button onclick="execCmd('cut')"><span class="fa fa-cut"></span></button>
+    <button onclick="execCmd('paste')"><span class="fa fa-copy"></span></button>
+    <button onclick="execCmd('indent')"><span class="fa fa-indent"></span></button>
+    <button onclick="execCmd('outdent')"><span class="fa fa-dedent"></span></button>
+    <button onclick="execCmd('subscript')"><span class="fa fa-subscript"></span></button>
+    <button onclick="execCmd('superscript')"><span class="fa fa-superscript"></span></button>
+    <button onclick="execCmd('undo')"><span class="fa fa-undo"></span></button>
+    <button onclick="execCmd('redo')"><span class="fa fa-repeat"></span></button>
+    <button onclick="execCmd('insertUnorderedList')"><span class="fa fa-list-ul"></span></button>
+    <button onclick="execCmd('insertOrderedList')"><span class="fa fa-list-ol"></span></button>
+    <button onclick="execCmd('insertParagraph')"><span class="fa fa-paragraph"></span></button>
+    <select onchange="execCmdWithArg('formatBlock',this.value)">
+        <option value="H1">H1</option>
+        <option value="H2">H2</option>
+        <option value="H3">H3</option>
+        <option value="H4">H4</option>
+        <option value="H5">H5</option>
+        <option value="H6">H6</option>
+    </select>
+    <button onclick="execCmd('insertHorizontalRule')">HR</button>
+    <br />
+    <button onclick="execCmdWithArg('createLink',prompt('Enter URL Here','http://'))"><span class="fa fa-link"></span></button>
+    <button onclick="execCmd('unlink')"><span class="fa fa-unlink"></span></button>
+    <button onclick="ToggleSource()"><span class="fa fa-code"></span></button> <!-- TODO: -->
+    <button onclick="ToggleEdit()"><span class="fa fa-toggle-on"></span></button> <!-- TODO: -->
+    <select onchange="execCmdWithArg('fontName',this.value)">
+        <option value="Arial">Arial</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="Courier">Courier</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Tacoma">Tacoma</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+    </select>
+    <select onchange="execCmdWithArg(fontSize)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
+    Fore Color: <input type="color" onchange="execCmdWithArg('foreColor',this.value)"/>
+    Background Color: <input type="color" onchange="execCmdWithArg('hiliteColor',this.value)"/>
+    <button onclick="execCmd('bold')"><span class="fa fa-file-image-o"></span></button>
+    <button onclick="execCmd('bold')">Select All</button>
+</div>
+<iframe name="Editor" style="width: 1000px; height: 500px;"></iframe>
+
+
+
+<script>
+    var editor = null;
+    function EnableEditMode() {
+        editor = document.getElementsByName('Editor')[0];
+        console.log(editor);
+        editor.contentDocument.designMode = 'On';
+    }
+
+    function execCmd(command) {
+        editor.contentDocument.execCommand(command,false,null)
+    }
+
+    function execCmdWithArg(command,argument) {
+        editor.contentDocument.execCommand(command,false,argument)
+    }
+
+</script>
+</body>
+</html>
