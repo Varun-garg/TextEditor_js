@@ -35,8 +35,9 @@
         <option value="H6">H6</option>
     </select>
     <button onclick="execCmd('insertHorizontalRule')">HR</button>
-    <br />
-    <button onclick="execCmdWithArg('createLink',prompt('Enter URL Here','http://'))"><span class="fa fa-link"></span></button>
+    <br/>
+    <button onclick="execCmdWithArg('createLink',prompt('Enter URL Here','http://'))"><span class="fa fa-link"></span>
+    </button>
     <button onclick="execCmd('unlink')"><span class="fa fa-unlink"></span></button>
     <button onclick="ToggleSource()"><span class="fa fa-code"></span></button> <!-- TODO: -->
     <button onclick="ToggleEdit()"><span class="fa fa-toggle-on"></span></button> <!-- TODO: -->
@@ -49,7 +50,7 @@
         <option value="Times New Roman">Times New Roman</option>
         <option value="Verdana">Verdana</option>
     </select>
-    <select onchange="execCmdWithArg(fontSize)">
+    <select onchange="execCmdWithArg('fontSize',this.value)">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -60,27 +61,43 @@
     </select>
     Fore Color: <input type="color" onchange="execCmdWithArg('foreColor',this.value)"/>
     Background Color: <input type="color" onchange="execCmdWithArg('hiliteColor',this.value)"/>
-    <button onclick="execCmd('bold')"><span class="fa fa-file-image-o"></span></button>
-    <button onclick="execCmd('bold')">Select All</button>
+    <button onclick="execCmdWithArg('insertImage',prompt('Enter the image URL','http://'))"><span
+            class="fa fa-file-image-o"></span></button>
+    <button onclick="execCmd('selectAll')">Select All</button>
 </div>
 <iframe name="Editor" style="width: 1000px; height: 500px;"></iframe>
 
-
-
 <script>
     var editor = null;
+    var editorBody = null;
+    var SourceCodeToggled = false;
+    var EditModeToggled = true;
+
     function EnableEditMode() {
         editor = document.getElementsByName('Editor')[0];
+        editorBody = editor.contentWindow.document.getElementsByTagName('body')[0];
         console.log(editor);
         editor.contentDocument.designMode = 'On';
     }
 
     function execCmd(command) {
-        editor.contentDocument.execCommand(command,false,null)
+        editor.contentDocument.execCommand(command, false, null)
     }
 
-    function execCmdWithArg(command,argument) {
-        editor.contentDocument.execCommand(command,false,argument)
+    function execCmdWithArg(command, argument) {
+        editor.contentDocument.execCommand(command, false, argument)
+    }
+
+    function ToggleSource() {
+        if (SourceCodeToggled) {
+            editorBody.innerHTML = editorBody.textContent;
+            SourceCodeToggled = false;
+        }
+        else {
+            editorBody.textContent = editorBody.innerHTML;
+            SourceCodeToggled = true;
+        }
+
     }
 
 </script>
