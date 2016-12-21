@@ -75,8 +75,7 @@
 
     function EnableEditMode() {
         editor = document.getElementsByName('Editor')[0];
-        editorBody = editor.contentWindow.document.getElementsByTagName('body')[0];
-        console.log(editor);
+        editorBody = editor.contentDocument.getElementsByTagName('body')[0];
         editor.contentDocument.designMode = 'On';
     }
 
@@ -97,7 +96,16 @@
             editorBody.textContent = editorBody.innerHTML;
             SourceCodeToggled = true;
         }
-
+    }
+    function ToggleEdit() {
+        if (EditModeToggled) {
+            editor.contentDocument.designMode = 'Off';
+            EditModeToggled = false;
+        }
+        else {
+            editor.contentDocument.designMode = 'On';
+            EditModeToggled = true;
+        }
     }
 
 </script>
