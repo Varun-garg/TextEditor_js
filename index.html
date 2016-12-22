@@ -7,52 +7,71 @@
 
     <title>Varun's Text Editor</title>
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/foundation.min.css"
+    <link rel="stylesheet" href="css/foundation.min.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body onload="EnableEditMode();">
 <br/><br/>
 <div class="row">
-    <button class="button medium secondary" onclick="execCmd('bold')"><span class="fa fa-bold"></span></button>
-    <button class="button medium secondary" onclick="execCmd('italic')"><span class="fa fa-italic"></span></button>
-    <button class="button medium secondary" nclick="execCmd('underline')"><span class="fa fa-underline"></span></button>
-    <button class="button medium secondary" onclick="execCmd('strikeThrough')"><span class="fa fa-strikethrough"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('justifyLeft')"><span class="fa fa-align-left"></span>
-    </button>
-    <button class="button medium secondary" ronclick="execCmd('justifyCenter')"><span class="fa fa-align-center"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('justifyRight')"><span class="fa fa-align-right"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('justifyFull')"><span class="fa fa-align-justify"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('cut')"><span class="fa fa-cut"></span></button>
-    <button class="button medium secondary" onclick="execCmd('paste')"><span class="fa fa-copy"></span></button>
-    <button class="button medium secondary" onclick="execCmd('indent')"><span class="fa fa-indent"></span></button>
-    <button class="button medium secondary" onclick="execCmd('outdent')"><span class="fa fa-dedent"></span></button>
-    <button class="button medium secondary" onclick="execCmd('subscript')"><span class="fa fa-subscript"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('superscript')"><span class="fa fa-superscript"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('undo')"><span class="fa fa-undo"></span></button>
-    <button class="button medium secondary" onclick="execCmd('redo')"><span class="fa fa-repeat"></span></button>
-    <button class="button medium secondary" onclick="execCmd('insertUnorderedList')"><span class="fa fa-list-ul"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('insertOrderedList')"><span class="fa fa-list-ol"></span>
-    </button>
-    <button class="button medium secondary" onclick="execCmd('insertParagraph')"><span class="fa fa-paragraph"></span>
-    </button>
-    <select class="small-1" onchange="execCmdWithArg('formatBlock',this.value)">
-        <option value="H1">H1</option>
-        <option value="H2">H2</option>
-        <option value="H3">H3</option>
-        <option value="H4">H4</option>
-        <option value="H5">H5</option>
-        <option value="H6">H6</option>
-    </select>
-    <button class="button medium secondary"
-            onclick="execCmdWithArg('insertImage',prompt('Enter the image URL','http://'))"><span
-            class="fa fa-file-image-o"></span></button>
-    <button class="button medium secondary" onclick="execCmd('selectAll')">Select All</button>
+    <div class="small-11 column">
+        <button class="button medium secondary" onclick="execCmd('bold')"><span class="fa fa-bold"></span></button>
+        <button class="button medium secondary" onclick="execCmd('italic')"><span class="fa fa-italic"></span>
+        </button>
+        <button class="button medium secondary" nclick="execCmd('underline')"><span class="fa fa-underline"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('strikeThrough')"><span
+                class="fa fa-strikethrough"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('justifyLeft')"><span
+                class="fa fa-align-left"></span>
+        </button>
+        <button class="button medium secondary" ronclick="execCmd('justifyCenter')"><span
+                class="fa fa-align-center"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('justifyRight')"><span
+                class="fa fa-align-right"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('justifyFull')"><span
+                class="fa fa-align-justify"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('cut')"><span class="fa fa-cut"></span></button>
+        <button class="button medium secondary" onclick="execCmd('paste')"><span class="fa fa-copy"></span></button>
+        <button class="button medium secondary" onclick="execCmd('indent')"><span class="fa fa-indent"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('outdent')"><span class="fa fa-dedent"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('subscript')"><span class="fa fa-subscript"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('superscript')"><span
+                class="fa fa-superscript"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('undo')"><span class="fa fa-undo"></span></button>
+        <button class="button medium secondary" onclick="execCmd('redo')"><span class="fa fa-repeat"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('insertUnorderedList')"><span
+                class="fa fa-list-ul"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('insertOrderedList')"><span
+                class="fa fa-list-ol"></span>
+        </button>
+        <button class="button medium secondary" onclick="execCmd('insertParagraph')"><span
+                class="fa fa-paragraph"></span>
+        </button>
+        <button class="button medium secondary"
+                onclick="execCmdWithArg('insertImage',prompt('Enter the image URL','http://'))"><span
+                class="fa fa-file-image-o"></span></button>
+        <button class="button medium secondary" onclick="execCmd('selectAll')">Select All</button>
+    </div>
+    <div class="small-1 column cen">
+        <select onchange="execCmdWithArg('formatBlock',this.value)">
+            <option value="H1">H1</option>
+            <option value="H2">H2</option>
+            <option value="H3">H3</option>
+            <option value="H4">H4</option>
+            <option value="H5">H5</option>
+            <option value="H6">H6</option>
+        </select>
+    </div>
 </div>
 <div class="row">
 
@@ -67,30 +86,36 @@
         <button class="button medium secondary" onclick="execCmd('insertHorizontalRule')">HR</button>
 
     </div>
-
-    <select class="small-2 column" onchange="execCmdWithArg('fontName',this.value)">
-        <option value="Arial">Arial</option>
-        <option value="Comic Sans MS">Comic Sans MS</option>
-        <option value="Courier">Courier</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Tacoma">Tacoma</option>
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Verdana">Verdana</option>
-    </select>
-    <select class="small-1 column" onchange="execCmdWithArg('fontSize',this.value)">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-    </select>
+    <div class="small-2 column">
+        <select onchange="execCmdWithArg('fontName',this.value)">
+            <option value="Arial">Arial</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier">Courier</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Tacoma">Tacoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+    </div>
+    <div class="small-1 column">
+        <select onchange="execCmdWithArg('fontSize',this.value)">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+    </div>
 
     <div class="small-3 column">
-        <div class="row">
-            <div class="small-7 column">Foreground Color:</div>
-            <div class="small-5 column">
+        <div class="row" data-equalizer="foreground">
+            <div class="small-7 column" data-equalizer-watch="foreground">
+                <div class="vertical-align"> Foreground Color:
+                </div>
+            </div>
+            <div class="small-5 column" data-equalizer-watch="foreground">
                 <input type="color" onchange="execCmdWithArg('foreColor',this.value)"/>
             </div>
         </div>
@@ -105,7 +130,9 @@
     </div>
 </div>
 <div class="row">
-    <iframe name="Editor" style="width: 1000px; height: 500px;"></iframe>
+    <div class="small-12 column">
+        <iframe name="Editor" style="width: inherit; height: 300px;"></iframe>
+    </div>
 </div>
 <script>
     var editor = null;
@@ -147,7 +174,13 @@
             EditModeToggled = true;
         }
     }
+</script>
 
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/foundation.js"></script>
+
+<script>
+    $(document).foundation();
 </script>
 </body>
 </html>
