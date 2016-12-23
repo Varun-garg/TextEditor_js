@@ -13,7 +13,7 @@
 <body onload="EnableEditMode();">
 <br/><br/>
 <div class="row">
-    <div class="small-11 column">
+    <div class="small-11 column" style="padding-right: 2px;">
         <button class="button medium secondary" onclick="execCmd('bold')"><span class="fa fa-bold"></span></button>
         <button class="button medium secondary" onclick="execCmd('italic')"><span class="fa fa-italic"></span>
         </button>
@@ -62,7 +62,7 @@
                 class="fa fa-file-image-o"></span></button>
         <button class="button medium secondary" onclick="execCmd('selectAll')">Select All</button>
     </div>
-    <div class="small-1 column cen">
+    <div class="small-1 column cen" style="padding-left: 2px;">
         <select onchange="execCmdWithArg('formatBlock',this.value)">
             <option value="H1">H1</option>
             <option value="H2">H2</option>
@@ -83,7 +83,7 @@
         <button class="button medium secondary" onclick="execCmd('unlink')"><span class="fa fa-unlink"></span></button>
         <button class="button medium secondary" onclick="ToggleSource()"><span class="fa fa-code"></span></button>
         <button class="button medium secondary" onclick="ToggleEdit()"><span class="fa fa-toggle-on"></span></button>
-        <button class="button medium secondary" onclick="execCmd('insertHorizontalRule')">HR</button>
+        <button class="button medium secondary" onclick="execCmd('insertHorizontalRule')">-------</button>
 
     </div>
     <div class="small-2 column">
@@ -97,7 +97,7 @@
             <option value="Verdana">Verdana</option>
         </select>
     </div>
-    <div class="small-1 column">
+    <div class="small-1 column" style="padding-left: 0;padding-right: 0;">
         <select onchange="execCmdWithArg('fontSize',this.value)">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -111,27 +111,28 @@
 
     <div class="small-3 column">
         <div class="row" data-equalizer="foreground">
-            <div class="small-7 column" data-equalizer-watch="foreground">
-                <div class="vertical-align"> Foreground Color:
-                </div>
+            <div class="small-7 column" data-equalizer-watch="foreground" style="padding-right: 2px;">
+                <div class="vertical-align" style="text-align: right;"><b>Foreground Color:</b></div>
             </div>
-            <div class="small-5 column" data-equalizer-watch="foreground">
-                <input type="color" onchange="execCmdWithArg('foreColor',this.value)"/>
+            <div class="small-5 column" data-equalizer-watch="foreground" style="padding-left: 2px;">
+                <input type="color" onchange="execCmdWithArg('foreColor',this.value)" style="margin-bottom: 0;"/>
             </div>
         </div>
     </div>
-    <div class="small-3 column">
+    <div class="small-3 column" data-equalizer="background">
         <div class="row">
-            <div class="small-7 column"> Background Color:</div>
-            <div class="small-5 column">
-                <input type="color" onchange="execCmdWithArg('hiliteColor',this.value)"/>
+            <div class="small-7 column" data-equalizer-watch="background" style="padding-right: 2px;">
+                <div class="vertical-align" style="text-align: right;"><b>Background Color:</b></div>
+            </div>
+            <div class="small-5 column" data-equalizer-watch="background" style="padding-left: 2px;">
+                <input type="color" onchange="execCmdWithArg('hiliteColor',this.value)" style="margin-bottom: 0;"/>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="small-12 column">
-        <iframe name="Editor" style="width: inherit; height: 300px;"></iframe>
+        <iframe name="Editor" style="width: inherit; height: 300px; border: solid; border-width: thin"></iframe>
     </div>
 </div>
 <script>
