@@ -134,7 +134,9 @@
 </div>
 <div class="row">
     <div class="small-12 column">
-        <iframe name="Editor" style="width: inherit; height: 300px; border: solid; border-width: thin"></iframe>
+        <iframe name="Editor"
+                style="width: inherit; height: 300px; border: solid; border-width: thin; background: whitesmoke;">
+        </iframe>
     </div>
 </div>
 <script>
@@ -151,11 +153,11 @@
     }
 
     function execCmd(command) {
-        editor.contentDocument.execCommand(command, false, null)
+        editor.contentDocument.execCommand(command, false, null);
     }
 
     function execCmdWithArg(command, argument) {
-        editor.contentDocument.execCommand(command, false, argument)
+        editor.contentDocument.execCommand(command, false, argument);
     }
 
     function ToggleSource() {
@@ -167,6 +169,7 @@
             editorBody.textContent = editorBody.innerHTML;
             SourceCodeToggled = true;
         }
+        editorBody.focus();
     }
     function ToggleEdit() {
         if (EditModeToggled) {
