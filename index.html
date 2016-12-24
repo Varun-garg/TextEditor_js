@@ -82,7 +82,9 @@
         </button>
         <button class="button medium secondary" onclick="execCmd('unlink')"><span class="fa fa-unlink"></span></button>
         <button class="button medium secondary" onclick="ToggleSource()"><span class="fa fa-code"></span></button>
-        <button class="button medium secondary" onclick="ToggleEdit()"><span class="fa fa-toggle-on"></span></button>
+        <button class="button medium secondary" onclick="ToggleEdit()">
+            <span class="fa fa-toggle-on" id="toggle-icon"></span>
+        </button>
         <button class="button medium secondary" onclick="execCmd('insertHorizontalRule')">-------</button>
 
     </div>
@@ -145,6 +147,7 @@
         editor = document.getElementsByName('Editor')[0];
         editorBody = editor.contentDocument.getElementsByTagName('body')[0];
         editor.contentDocument.designMode = 'On';
+        editorBody.focus();
     }
 
     function execCmd(command) {
@@ -168,10 +171,13 @@
     function ToggleEdit() {
         if (EditModeToggled) {
             editor.contentDocument.designMode = 'Off';
+            document.getElementById('toggle-icon').className = 'fa fa-toggle-off';
             EditModeToggled = false;
         }
         else {
             editor.contentDocument.designMode = 'On';
+            document.getElementById('toggle-icon').className = 'fa fa-toggle-on';
+            editorBody.focus();
             EditModeToggled = true;
         }
     }
